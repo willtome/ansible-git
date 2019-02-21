@@ -22,12 +22,18 @@
     chdir: "{{ playbook_dir }}{{ git_repo_path }}"
   ignore_errors: true
 
+- name: git wrapper
+  copy:
+    dest: "{{ playbook_dir }}/.ssh/ssh"
+    content: "ssh -i {{ git_temp_file.path }} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $*"
+    mode: 0700
+
 - name: git push
   shell: git push --force
   args:
     chdir: "{{ playbook_dir }}{{ git_repo_path }}"
   environment:
-    GIT_SSH_COMMAND: "ssh -i '{{ git_temp_file.path }}' -F /dev/null"
+    GIT_SSH: "{{ playbook_dir }}/.ssh/ssh"
 
 - name: git status
   shell: git status
