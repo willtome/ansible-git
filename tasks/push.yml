@@ -16,6 +16,18 @@
     chdir: "{{ playbook_dir }}{{ git_repo_path }}"
   register: git_add_status
 
+- name: git username
+  shell: git config user.name "{{ git_username }}"
+  args:
+    chdir: "{{ playbook_dir }}{{ git_repo_path }}"
+  when: git_username is defined
+
+- name: git email
+  shell: git config user.email "{{ git_email }}"
+  args:
+    chdir: "{{ playbook_dir }}{{ git_repo_path }}"
+  when: git_email is defined
+
 - name: git commit
   shell: git commit -a -m "'{{ git_msg }}'"
   args:
