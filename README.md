@@ -6,6 +6,8 @@ This role can be used to do a `git pull` and `git push` within a playbook. Below
 |-|-|-|
 | `git_url` | | (required) The URL of the git repository in the from git@server.com:namespace/repo |
 | `git_key` | | (required) The SSH private key used to authenticate to the repo. Use of lookup plugin, ansible vault, or Tower custom credential recommended |
+| `git_email` | ansible_git@ansible.com | The email for git to use for commits |
+| `git_username` | ansible_git | The username for git to use for commits |
 | `git_branch` | master | Branch in the repository |
 | `git_msg` | 'update files with ansible' | Git commit message |
 | `git_remove_local` | false | remove local copy of repository |
