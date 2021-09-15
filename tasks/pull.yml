@@ -10,7 +10,7 @@
 - name: git clone
   git:
    repo: "{{ git_url }}"
-   dest: "{{ playbook_dir }}/{{ git_repo_path }}"
+   dest: "{{ playbook_dir }}{{ git_repo_path }}"
    accept_hostkey: yes
    key_file: "{{ git_temp_file.path }}"
 
