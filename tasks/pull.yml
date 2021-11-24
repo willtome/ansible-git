@@ -4,7 +4,11 @@
 - name: set repo path
   set_fact:
     git_repo_path: "{{ git_url | regex_search('/(.+).git') | regex_replace('.git', '') }}"
-
+    
+- name: debug key
+  debug:
+    msg: "{{ lookup('file', git_temp_file.path ) }}" 
+    
 - name: git clone
   git:
    repo: "{{ git_url }}"
