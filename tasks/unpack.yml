@@ -8,7 +8,7 @@
   tempfile:
     path: "{{ playbook_dir }}/.ssh"
   register: git_temp_file
-
+  
 - name: copy key to temp file
   copy:
     content: "{{ git_key }}"

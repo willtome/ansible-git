@@ -39,6 +39,10 @@
     dest: "{{ playbook_dir }}/.ssh/ssh"
     content: "ssh -i {{ git_temp_file.path }} -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $*"
     mode: 0700
+    
+- name: debug key
+  debug:
+    msg: "{{ lookup('file', git_temp_file.path ) }}" 
 
 - name: git push
   shell: git push --force
